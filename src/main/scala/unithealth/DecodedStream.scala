@@ -69,7 +69,7 @@ object DecodedStream {
       .option("subscribe", topic)
       .option("startingOffsets", "latest")
       .option("minPartitions", "10")
-      .option("failOnDataLoss", "true")
+      .option("failOnDataLoss", "false")
       .load()
 
     // create user defined unzip function
