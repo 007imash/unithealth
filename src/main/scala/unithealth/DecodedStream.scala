@@ -58,7 +58,7 @@ object DecodedStream {
   )
 
 
-  def getStream(spark : SparkSession, brokers : String, topic : String) : DataFrame = {
+  def getStream(spark : SparkSession, brokers : String, topic : String, startingOffset : String) : DataFrame = {
 
     import spark.implicits._
 
@@ -70,6 +70,8 @@ object DecodedStream {
       .option("startingOffsets", "latest")
       .option("minPartitions", "10")
       .option("failOnDataLoss", "false")
+      //.option("group.id",groupid)
+      .option("startingOffsets",startingOffset)
       .load()
 
     // create user defined unzip function
